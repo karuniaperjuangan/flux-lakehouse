@@ -10,7 +10,7 @@ patches:
   - path: patches/minio-config.yaml
     target:
       kind: HelmRelease
-      name: trino
+      name: minio
   - path: patches/trino-config.yaml
     target:
       kind: HelmRelease
