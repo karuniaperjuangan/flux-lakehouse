@@ -10,7 +10,7 @@ spec:
       chart: minio/minio-operator
       sourceRef:
         kind: HelmRepository
-        name: trino
+        name: minio
         namespace: flux-system
   install:
     createNamespace: true
@@ -28,7 +28,7 @@ spec:
       chart: minio/minio-operator
       sourceRef:
         kind: HelmRepository
-        name: trino
+        name: minio
         namespace: flux-system
   install:
     createNamespace: true
