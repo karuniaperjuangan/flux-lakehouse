@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: trino
+resources:
+  - ../base/trino
+  - ../base/minio
+  - ../base/cnpg
+  - resources/postgres.yaml
+patches:
+  - path: patches/minio-config.yaml
+    target:
+      kind: HelmRelease
+      name: trino
+  - path: patches/trino-config.yaml
+    target:
+      kind: HelmRelease
+      name: trino

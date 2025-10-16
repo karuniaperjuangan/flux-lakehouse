@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: trino
+  namespace: trino
+spec:
+  values:
+    catalogs:
+      iceberg:
+        connector.name: "iceberg"
+        "iceberg.catalog.type": "jdbc"
+        "iceberg.jdbc-catalog.driver-class": "org.postgresql.Driver"
+        "iceberg.jdbc-catalog.connection-url": "jdbc:postgresql://iceberg-catalog-rw.database.svc.cluster.local:5432/postgres"
+        "iceberg.jdbc-catalog.connection-user": "superuser" # User from CNPG secret
+        "iceberg.jdbc-catalog.connection-password": "${trino-db-secret.password}" # Flux will get this from the secret
+        "iceberg.jdbc-catalog.catalog-name": "iceberg"
+        "hive.s3.aws-access-key": "minio" # Default MinIO credentials
+        "hive.s3.aws-secret-key": "minio123"
+        "hive.s3.endpoint": "http://minio.minio.svc.cluster.local:9000"
+        "hive.s3.path-style-access": "true"
+    secrets:
+      trino-db-secret:
+        secretName: iceberg-catalog-superuser
+        keys:
+          - password
