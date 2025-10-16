@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: minio/minio-operator
+      chart: cloudnative-pg
       sourceRef:
         kind: HelmRepository
         name: cnpg

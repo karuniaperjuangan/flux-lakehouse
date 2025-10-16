@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: minio/minio-operator
+      chart: operator
       sourceRef:
         kind: HelmRepository
         name: minio
@@ -25,7 +25,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: minio/minio-operator
+      chart: tenant
       sourceRef:
         kind: HelmRepository
         name: minio
