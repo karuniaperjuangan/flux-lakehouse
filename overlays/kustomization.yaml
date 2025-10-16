@@ -4,7 +4,7 @@ namespace: trino
 resources:
   - ../base/trino/helm-release.yaml
   - ../base/minio/helm-release.yaml
-  - ../base/cnpg/helm-release.yaml
+  - ../base/postgres/helm-release.yaml
   - resources/postgres.yaml
 patches:
   - path: patches/minio-config.yaml
